@@ -36,6 +36,12 @@ public class Estudiante {
     }
 
 
+     @Override
+
+    public String toString() {
+        return nombre;
+    }
+
     public int getCodEstudiante() {
         return codEstudiante;
     }
@@ -60,11 +66,36 @@ public class Estudiante {
         this.descripcion = descripcion;
     }
 
-    
-     @Override
+    public String getCedula() {
+        return cedula;
+    }
 
-    public String toString() {
-        return nombre;
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public int getCodigo_sicoa() {
+        return codigo_sicoa;
+    }
+
+    public void setCodigo_sicoa(int codigo_sicoa) {
+        this.codigo_sicoa = codigo_sicoa;
+    }
+
+    public int getCodigo_periodo() {
+        return codigo_periodo;
+    }
+
+    public void setCodigo_periodo(int codigo_periodo) {
+        this.codigo_periodo = codigo_periodo;
+    }
+
+    public int getCodigo_nivel() {
+        return codigo_nivel;
+    }
+
+    public void setCodigo_nivel(int codigo_nivel) {
+        this.codigo_nivel = codigo_nivel;
     }
     
     

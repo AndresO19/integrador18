@@ -2,7 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package ACCESODATOS;
+package Accesodatos;
+
 
 import java.io.Serializable;
 import java.sql.*;

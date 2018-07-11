@@ -17,8 +17,7 @@ public interface IEstudiantes {
     public int insertar (Estudiante estudiante) throws Exception;
     public int modificar (Estudiante estudiante) throws Exception; 
     public int eliminar (Estudiante estudiante) throws Exception;
-    
-    public Estudiante obtener (int codEstudiante) throws Exception;
+     public Estudiante obtener (int codEstudiante) throws Exception;
     public ArrayList<Estudiante> obtener() throws Exception;
     
 }
