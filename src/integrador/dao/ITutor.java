@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package INTEGRADOR.DAO;
+package integrador.dao;
 
-import INTEGRADOR.ENTIDADES.*;
+import integrador.entidad.Tutor;
 import java.util.ArrayList;
 /**
  *

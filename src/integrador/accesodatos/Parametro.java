@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Accesodatos;
+package integrador.accesodatos;
 
 import java.io.Serializable;
 

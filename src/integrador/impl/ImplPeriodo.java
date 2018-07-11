@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package INTEGRADOR.IMPLEMENTACIONES;
+package integrador.impl;
 
-import Accesodatos.Parametro;
-import INTEGRADOR.DAO.*;
-import INTEGRADOR.ENTIDADES.*;
-import Accesodatos.AccesoDatos;
-import Accesodatos.ConjuntoResultado;
+import integrador.entidad.Periodo;
+import integrador.dao.IPeriodo;
+import integrador.accesodatos.Parametro;
+import integrador.accesodatos.AccesoDatos;
+import integrador.accesodatos.ConjuntoResultado;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;

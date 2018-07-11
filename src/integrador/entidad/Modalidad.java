@@ -1,5 +1,5 @@
 
-package INTEGRADOR.ENTIDADES;
+package integrador.entidad;
 
 /**
  *

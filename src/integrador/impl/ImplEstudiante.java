@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package INTEGRADOR.IMPLEMENTACIONES;
-import  Accesodatos.Parametro;
-import Accesodatos.Conexion;
-import INTEGRADOR.DAO.*;
-import INTEGRADOR.ENTIDADES.*;
+package integrador.impl;
+import integrador.entidad.Estudiante;
+import integrador.dao.IEstudiantes;
+import  integrador.accesodatos.Parametro;
+import integrador.accesodatos.Conexion;
    
 import java.sql.ResultSet;
 import java.util.ArrayList;

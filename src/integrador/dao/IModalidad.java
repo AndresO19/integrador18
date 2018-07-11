@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package INTEGRADOR.DAO;
-import INTEGRADOR.ENTIDADES.Modalidad;
+package integrador.dao;
+import integrador.entidad.Modalidad;
 import java.util.ArrayList;
 /**
  *

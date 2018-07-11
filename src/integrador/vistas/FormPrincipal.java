@@ -1,5 +1,5 @@
 
-package vistas;
+package integrador.vistas;
 
 import javafx.application.*;
 import javafx.event.*;
