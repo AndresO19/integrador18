@@ -14,12 +14,9 @@ import integrador.rnegocio.entidad.Ambitos;
  */
 public interface IAmbito {
     
-    
-    
     public int insertar (Ambitos ambitos) throws Exception;
     public int modificar (Ambitos ambitos) throws Exception; 
     public int eliminar (Ambitos ambitos) throws Exception;
-    
     public Ambitos obtener (int codAmbitos) throws Exception;
     public ArrayList<Ambitos> obtener() throws Exception;
     
