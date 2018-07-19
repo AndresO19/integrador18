@@ -1,26 +1,20 @@
 
-package integrador.entidad;
+package integrador.rnegocio.entidad;
 
-/**
- *
- * @author andresorozco
- */
-public class Modalidad {
-    
-    
+public class Facultad {
     private int codigo;
     private String nombre;
     private String descripcion;
-    private int estado;
+    private int codigo_sicoa;
 
-    public Modalidad(int codigo, String nombre, String descripcion, int estado) {
+    public Facultad() {
+    }
+
+    public Facultad(int codigo, String nombre, String descripcion, int codigo_sicoa) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.estado = estado;
-    }
-
-    public Modalidad() {
+        this.codigo_sicoa = codigo_sicoa;
     }
 
     public int getCodigo() {
@@ -47,11 +41,12 @@ public class Modalidad {
         this.descripcion = descripcion;
     }
 
-    public int getEstado() {
-        return estado;
+    public int getCodigo_sicoa() {
+        return codigo_sicoa;
     }
 
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }   
+    public void setCodigo_sicoa(int codigo_sicoa) {
+        this.codigo_sicoa = codigo_sicoa;
+    }
+    
 }

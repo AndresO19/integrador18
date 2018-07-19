@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package integrador.dao;
+package integrador.rnegocio.dao;
 
-import integrador.entidad.Periodo;
+import integrador.rnegocio.entidad.Periodo;
 import java.util.ArrayList;
 import java.util.List;
 

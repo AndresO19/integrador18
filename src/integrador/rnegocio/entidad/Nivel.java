@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package integrador.entidad;
+package integrador.rnegocio.entidad;
 
 /**
  *
@@ -16,18 +16,18 @@ public class Nivel {
     private String nombre;
     private String paralelo;
     private String modalidad;
-    private int codigo_escuela;
+    private Escuela codigo_escuela;
 
-    public Nivel(int codigo, int codigo_sicoa, String nombre, String paralelo, String modalidad, int codigo_escuela) {
+    public Nivel() {
+    }
+
+    public Nivel(int codigo, int codigo_sicoa, String nombre, String paralelo, String modalidad, Escuela codigo_escuela) {
         this.codigo = codigo;
         this.codigo_sicoa = codigo_sicoa;
         this.nombre = nombre;
         this.paralelo = paralelo;
         this.modalidad = modalidad;
         this.codigo_escuela = codigo_escuela;
-    }
-
-    public Nivel() {
     }
 
     public int getCodigo() {
@@ -70,14 +70,12 @@ public class Nivel {
         this.modalidad = modalidad;
     }
 
-    public int getCodigo_escuela() {
+    public Escuela getCodigo_escuela() {
         return codigo_escuela;
     }
 
-    public void setCodigo_escuela(int codigo_escuela) {
+    public void setCodigo_escuela(Escuela codigo_escuela) {
         this.codigo_escuela = codigo_escuela;
     }
-    
-    
     
 }

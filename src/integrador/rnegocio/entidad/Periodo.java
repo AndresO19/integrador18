@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package integrador.entidad;
-
-import java.sql.Date;
+package integrador.rnegocio.entidad;
+import java.util.*;
 
 
 /**
@@ -14,7 +13,7 @@ import java.sql.Date;
  */
 public class Periodo {
     
-    private int codigoP;
+    private int codigo;
     private String nombre;
     private Date fecha_inicio;
     private Date fecha_fin;
@@ -23,8 +22,11 @@ public class Periodo {
     private int codigo_sicoa;
     private int estado;
 
-    public Periodo(int codigoP, String nombre, Date fecha_inicio, Date fecha_fin, int tipo, String observaciones, int codigo_sicoa, int estado) {
-        this.codigoP = codigoP;
+    public Periodo() {
+    }
+
+    public Periodo(int codigo, String nombre, Date fecha_inicio, Date fecha_fin, int tipo, String observaciones, int codigo_sicoa, int estado) {
+        this.codigo = codigo;
         this.nombre = nombre;
         this.fecha_inicio = fecha_inicio;
         this.fecha_fin = fecha_fin;
@@ -34,15 +36,12 @@ public class Periodo {
         this.estado = estado;
     }
 
-    public Periodo() {
+    public int getCodigo() {
+        return codigo;
     }
 
-    public int getCodigoP() {
-        return codigoP;
-    }
-
-    public void setCodigoP(int codigoP) {
-        this.codigoP = codigoP;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getNombre() {
@@ -100,6 +99,5 @@ public class Periodo {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-
     
 }

@@ -5,7 +5,7 @@
 package integrador.accesodatos;
 
 import java.io.Serializable;
-import recursos.ResourceUtil;
+import integrador.recursos.ResourceUtil;
 
 /**
  *

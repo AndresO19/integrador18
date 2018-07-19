@@ -3,29 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package integrador.entidad;
+package integrador.rnegocio.entidad;
 
 /**
  *
  * @author andresorozco
  */
-public class Ambitos {
+public class Usuario_rol {
     
     private int codigo;
-    private String nombre;
-    private String observacion;
+    private int codigo_rol;
+    private int codigo_usuario;
     private int estado;
 
-    public Ambitos(int codigo, String nombre, String observacion, int estado) {
+    public Usuario_rol(int codigo, int codigo_rol, int codigo_usuario, int estado) {
         this.codigo = codigo;
-        this.nombre = nombre;
-        this.observacion = observacion;
+        this.codigo_rol = codigo_rol;
+        this.codigo_usuario = codigo_usuario;
         this.estado = estado;
     }
 
-    
-    
-    public Ambitos() {
+    public Usuario_rol() {
     }
 
     public int getCodigo() {
@@ -36,20 +34,20 @@ public class Ambitos {
         this.codigo = codigo;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getCodigo_rol() {
+        return codigo_rol;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCodigo_rol(int codigo_rol) {
+        this.codigo_rol = codigo_rol;
     }
 
-    public String getObservacion() {
-        return observacion;
+    public int getCodigo_usuario() {
+        return codigo_usuario;
     }
 
-    public void setObservacion(String observacion) {
-        this.observacion = observacion;
+    public void setCodigo_usuario(int codigo_usuario) {
+        this.codigo_usuario = codigo_usuario;
     }
 
     public int getEstado() {
@@ -59,5 +57,8 @@ public class Ambitos {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+    
+    
+    
     
 }

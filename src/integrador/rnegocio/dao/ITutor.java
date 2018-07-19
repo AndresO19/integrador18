@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package integrador.dao;
+package integrador.rnegocio.dao;
 
 import integrador.entidad.Tutor;
 import java.util.ArrayList;
