@@ -11,4 +11,7 @@ package integrador.rnegocio.impl;
  */
 public class NivelImpl {
     
+    
+    
+    
 }
