@@ -14,9 +14,9 @@ import java.util.ArrayList;
  */
 public interface INivel {
     
-    public int insertar (Nivel nivel) throws Exception;
-    public int modificar (Nivel nivel) throws Exception; 
-    public int eliminar (Nivel nivel) throws Exception;
+    public boolean insertar (Nivel nivel) throws Exception;
+    public boolean modificar (Nivel nivel) throws Exception; 
+    public boolean eliminar (Nivel nivel) throws Exception;
     
     public Nivel obtener (int codNivel) throws Exception;
     public ArrayList<Nivel> obtener() throws Exception;
