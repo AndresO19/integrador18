@@ -12,9 +12,9 @@ import java.util.ArrayList;
  */
 public interface IModalidad {
     
-    public int insertar (Modalidad modalidad) throws Exception;
-    public int modificar (Modalidad modalidad) throws Exception; 
-    public int eliminar (Modalidad modalidad) throws Exception;
+    public boolean insertar (Modalidad modalidad) throws Exception;
+    public boolean modificar (Modalidad modalidad) throws Exception; 
+    public boolean eliminar (Modalidad modalidad) throws Exception;
     
     public Modalidad obtener (int codModalidad) throws Exception;
     public ArrayList<Modalidad> obtener() throws Exception;
