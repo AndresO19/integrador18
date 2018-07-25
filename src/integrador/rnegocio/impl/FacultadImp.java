@@ -4,150 +4,165 @@
  * and open the template in the editor.
  */
 package integrador.rnegocio.impl;
-import integrador.rnegocio.dao.*;
 import integrador.rnegocio.entidad.*;
 import integrador.accesodatos.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.io.Serializable;
 
 /**
  *
  * @author Jhon
  */
-public class FacultadImp implements IFacultad{
+public class FacultadImp implements Serializable {
 
-    @Override
-    public boolean insertar(Facultad facultad) throws Exception {
-        boolean resultado=false;
+    public static boolean Insertar(Facultad facultad) throws Exception {
+        boolean eje = false;
         try {
-            ArrayList<Parametro> listP = new ArrayList<Parametro>();
+            ArrayList<Parametro> lstP = new ArrayList<Parametro>();
             String sql = "select * from actividades.fi_facultad(?,?,?,?)";
-            listP.add(new Parametro(1, facultad.getCodigo()));
-            listP.add(new Parametro(2, facultad.getNombre()));
-            listP.add(new Parametro(3, facultad.getDescripcion()));
-            listP.add(new Parametro(4, facultad.getCodigo_sicoa()));
-            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, listP);
+            lstP.add(new Parametro(1, facultad.getCodigo()));
+            lstP.add(new Parametro(2, facultad.getNombre()));
+            lstP.add(new Parametro(3, facultad.getDescripcion()));
+            lstP.add(new Parametro(4, facultad.getCodigo_sicoa()));
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstP);
             while (rs.next()) {
                 if (rs.getString(0).equals("true"));
-                resultado = true;
+                eje = true;
             }
         } catch (SQLException exConec) {
             throw new Exception(exConec.getMessage());
         }
-        return resultado;
+        return eje;
     }
 
-    @Override
-        public int modificar(Facultad facultad) throws Exception {
-        int numFilas = 0;
-        String sqlC = "UPDATE Facultad SET codFacultad=?, nombre=?, descripcion=? WHERE codFacultad=?";
-        
-        ArrayList<Parametro> lisParametros = new ArrayList<>();
-        lisParametros.add(new Parametro(1, facultad.getCodigo()));
-        lisParametros.add(new Parametro(2, facultad.getNombre()));
-        lisParametros.add(new Parametro(3, facultad.getDescripcion()));
-        lisParametros.add(new Parametro(4, facultad.getCodigo_sicoa()));
-       
-        Conexion con = null;
+    public static ArrayList<Facultad> llenarFacultades(ConjuntoResultado rs) throws Exception {
+        ArrayList<Facultad> lst = new ArrayList<Facultad>();
+        Facultad facultad = null;
         try {
-            con = new Conexion();
-            con.conectar();
-            numFilas = con.ejecutarComando(sqlC, lisParametros);
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        } finally {
-            if (con != null) {
-                con.desconectar();
+            while (rs.next()) {
+                facultad = new Facultad(rs.getInt("pcodigo"), rs.getString("pnombre"), rs.getString("pdescripcion"), rs.getInt("pcodigo_sicoa"));
+                lst.add(facultad);
             }
+        } catch (Exception e) {
+            lst.clear();
+            throw e;
         }
-        return numFilas;
+        return lst;
     }
 
-    @Override
-     public int eliminar(Facultad facultad) throws Exception {
-        int numFilas = 0;
-        String sqlC = "DELETE FROM Facultad WHERE codFacultad=?";
-        ArrayList<Parametro> lisParametros = new ArrayList<>();
-        lisParametros.add(new Parametro(1, facultad.getCodigo()));
-        Conexion con = null;
+    public static ArrayList<Facultad> ObtenerFacultades() throws Exception {
+        ArrayList<Facultad> lst = new ArrayList<Facultad>();
         try {
-            con = new Conexion();
-            con.conectar();
-            numFilas = con.ejecutarComando(sqlC, lisParametros);
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        } finally {
-            if (con != null) {
-                con.desconectar();
-            }
+            String sql = "select * from master.fc_obtener_datos_generales_facultad()";
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql);
+            lst = llenarFacultades(rs);
+            rs = null;
+
+        } catch (SQLException exConec) {
+            throw new Exception(exConec.getMessage());
         }
-        return numFilas;
+        return lst;
     }
 
-    @Override
-     public ArrayList<Facultad> obtener() throws Exception {
-        ArrayList<Facultad> listFacultad= new ArrayList<>();
-        String sqlC = "SELECT codEstudiante, nombre, descripcion FROM Estudiante";
-        Conexion con = null;
+    public static Facultad ObtenerFacultadDadoCodigo(int codigo) throws Exception {
+        Facultad lst;
         try {
-            
-            con = new Conexion();
-            con.conectar();
-           
-            ResultSet rst = con.ejecutarQuery(sqlC, null);
-           
-            while (rst.next()) {
-                Facultad nFacultad = new Facultad();
-                nFacultad.setCodigo(rst.getInt(1));
-                nFacultad.setNombre(rst.getString(2));
-                nFacultad.setDescripcion(rst.getString(3));
-                nFacultad.setCodigo_sicoa(rst.getInt(4));
-             
-                listFacultad.add(nFacultad);
-            }
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        } finally {
-            if (con != null) {
-                con.desconectar();
-            }
+            ArrayList<Parametro> lstP = new ArrayList<Parametro>();
+            String sql = "select * from actividades.fc_obtener_facultad_codigo(?)";
+            lstP.add(new Parametro(1, codigo));
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstP);
+            lst = new Facultad();
+            lst = llenarFacultades(rs).get(0);
+            rs = null;
+        } catch (SQLException exConec) {
+            throw new Exception(exConec.getMessage());
         }
-        return listFacultad;
+        return lst;
     }
 
-    @Override
-    public Facultad obtener(int codEstudiante) throws Exception {
-         Facultad nFacultad= null;
- 
-        String sqlC = "SELECT codEstudiante, nombre, descripcion FROM Estudiante WHERE codEstudiante=?";
-        ArrayList<Parametro> lisParametros = new ArrayList<>();
-        lisParametros.add(new Parametro(1, nFacultad.getCodigo()));
-        Conexion con = null;
+    public static Facultad ObtenerFacultadDadoCodigoSicoa(int codigo) throws Exception {
+        Facultad lst;
         try {
-            con = new Conexion();
-            con.conectar();
-            ResultSet rst = con.ejecutarQuery(sqlC, lisParametros);
-            
-            while (rst.next()) {
-               
-                nFacultad= new Facultad();
-                nFacultad.setCodigo(rst.getInt(1));
-                nFacultad.setNombre(rst.getString(2));
-                nFacultad.setDescripcion(rst.getString(3));
-                nFacultad.setCodigo_sicoa(rst.getInt(4));
-                
-                
-            }
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        } finally {
-            if (con != null) {
-                con.desconectar();
-            }
+            ArrayList<Parametro> lstP = new ArrayList<Parametro>();
+            String sql = "select * from actividades.fc_obtener_facultad_codigo_sicoa(?)";
+            lstP.add(new Parametro(1, codigo));
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstP);
+            lst = new Facultad();
+            lst = llenarFacultades(rs).get(0);
+            rs = null;
+        } catch (SQLException exConec) {
+            throw new Exception(exConec.getMessage());
         }
-        return nFacultad;  }
-  
+        return lst;
+    }
+    
+    public static Facultad ObtenerFacultadDadoDescripcion(String descripcion) throws Exception {
+        Facultad lst;
+        try {
+            ArrayList<Parametro> lstP = new ArrayList<Parametro>();
+            String sql = "select * from actividades.fc_obtener_facultad_descripcion(?)";
+            lstP.add(new Parametro(1, descripcion));
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstP);
+            lst = new Facultad();
+            lst = llenarFacultades(rs).get(0);
+            rs = null;
+        } catch (SQLException exConec) {
+            throw new Exception(exConec.getMessage());
+        }
+        return lst;
+    }
+    
+    public static Facultad ObtenerFacultadDadoNombre(String nombre) throws Exception {
+        Facultad lst;
+        try {
+            ArrayList<Parametro> lstP = new ArrayList<Parametro>();
+            String sql = "select * from actividades.fc_obtener_facultad_nombre(?)";
+            lstP.add(new Parametro(1, nombre));
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstP);
+            lst = new Facultad();
+            lst = llenarFacultades(rs).get(0);
+            rs = null;
+        } catch (SQLException exConec) {
+            throw new Exception(exConec.getMessage());
+        }
+        return lst;
+    }
+    
+    public static boolean actualizar(Facultad facultad) throws Exception {
+        boolean eje = false;
+        try {
+            ArrayList<Parametro> lstP = new ArrayList<Parametro>();
+            String sql = "select * from actividades.fa_facultad(?,?,?,?)";
+            lstP.add(new Parametro(1, facultad.getNombre()));
+            lstP.add(new Parametro(2, facultad.getDescripcion()));
+            lstP.add(new Parametro(3, facultad.getCodigo_sicoa()));
+            lstP.add(new Parametro(4, facultad.getCodigo()));
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstP);
+            while (rs.next()) {
+                if (rs.getString(0).equals("true"));
+                eje = true;
+            }
+        } catch (SQLException exConec) {
+            throw new Exception(exConec.getMessage());
+        }
+        return eje;
+    }
+
+    public static boolean eliminar(Facultad facultad) throws Exception {
+        boolean eje = false;
+        try {
+            ArrayList<Parametro> lstP = new ArrayList<Parametro>();
+            String sql = "select * from actividades.fe_facultad(?)";
+            lstP.add(new Parametro(1, facultad.getCodigo()));
+            ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql, lstP);
+            while (rs.next()) {
+                if (rs.getString(0).equals("true"));
+                eje = true;
+            }
+        } catch (SQLException exConec) {
+            throw new Exception(exConec.getMessage());
+        }
+        return eje;
+    }
 }
-
-

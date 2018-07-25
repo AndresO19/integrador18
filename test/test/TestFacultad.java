@@ -6,7 +6,6 @@ package test;
  * and open the template in the editor.
  */
 
-import integrador.rnegocio.dao.IFacultad;
 import integrador.accesodatos.*;
 import integrador.rnegocio.impl.FacultadImp;
 import integrador.rnegocio.entidad.Facultad;
@@ -25,11 +24,10 @@ public class TestFacultad {
     
     @Test
     public void testGeneral() {
-        IFacultad facultadDao=new FacultadImp();
         Facultad nFac=new Facultad(20, "Facultad de Bagos", "Facultad de bagos", 123123);
         boolean res=false;
         try {
-            res=facultadDao.insertar(nFac);
+            res=FacultadImp.Insertar(nFac);
             if(res){
                 System.out.println("Ingreso Correcto");
             }
