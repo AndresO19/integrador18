@@ -54,7 +54,7 @@ public class FacultadImp implements Serializable {
     public static ArrayList<Facultad> ObtenerFacultades() throws Exception {
         ArrayList<Facultad> lst = new ArrayList<Facultad>();
         try {
-            String sql = "select * from master.fc_obtener_datos_generales_facultad()";
+            String sql = "select * from actividades.fc_obtener_datos_generales_facultad()";
             ConjuntoResultado rs = AccesoDatos.ejecutaQuery(sql);
             lst = llenarFacultades(rs);
             rs = null;
