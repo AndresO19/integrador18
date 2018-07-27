@@ -1,15 +1,14 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package integrador.accesodatos;
 
+import integrador.accesodatos.*;
 import java.io.Serializable;
 
-/**
- *
- * @author DIEGO_PALACIOS
- */
+
 public class Parametro implements Serializable {
 
     private int posicion;

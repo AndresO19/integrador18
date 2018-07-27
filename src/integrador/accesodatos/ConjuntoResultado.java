@@ -1,20 +1,22 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package integrador.accesodatos;
 
+import integrador.accesodatos.*;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.*;
 
-/**
- *
- * @author Paul
- */
+
 public class ConjuntoResultado implements Serializable {
 
     private String[] cabecera;

@@ -1,4 +1,3 @@
-
 package integrador.vistas;
 
 import javafx.application.*;
@@ -12,16 +11,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class FormPrincipal extends Application {
-    
+
     //Escenario
     public Image imagenPrincipal;
     public ImageView visorInicio;
-    public Scene escenario; 
+    public Scene escenario;
     //ventana General
     public Pane escritorio;
     public VBox superior;
     public BorderPane vPrincipal;
-    
+
     //items menu
     public MenuBar menuPrincipal;
     public Menu mInicio;
@@ -33,7 +32,7 @@ public class FormPrincipal extends Application {
     public Menu mAmbitos;
     public Menu mModalidades;
     public Menu mManual;
-    
+
     //items submenus
     public MenuItem smIniciarSesion;
     public MenuItem smSalir;
@@ -73,103 +72,143 @@ public class FormPrincipal extends Application {
     public MenuItem smPerMostrarCodigo;
     public MenuItem smPerListado;
     public MenuItem smManualMostrar;
-    
+
     @Override
     public void start(Stage primaryStage) {
         //Inicializar items
-        imagenPrincipal=new Image("file:src/integrador/recursos/siget-011.jpg");
-        visorInicio=new ImageView(imagenPrincipal);
-        vPrincipal=new BorderPane();
-        menuPrincipal=new MenuBar();
-        mInicio=new Menu("Inicio");
-        mEstudiante=new Menu("Estudiantes");
-        mFacultades=new Menu("Facultades");
-        mEscuelas=new Menu("Escuelas");
-        mPeriodos=new Menu("Periodos");
-        mNiveles=new Menu("Niveles");
-        mAmbitos=new Menu("Ambitos");
-        mModalidades=new Menu("Modalidades");
-        mManual=new Menu("manual de Usuario");
+        imagenPrincipal = new Image("file:src/integrador/recursos/siget-011.jpg");
+        visorInicio = new ImageView(imagenPrincipal);
+        vPrincipal = new BorderPane();
+        menuPrincipal = new MenuBar();
+        mInicio = new Menu("Inicio");
+        mEstudiante = new Menu("Estudiantes");
+        mFacultades = new Menu("Facultades");
+        mEscuelas = new Menu("Escuelas");
+        mPeriodos = new Menu("Periodos");
+        mNiveles = new Menu("Niveles");
+        mAmbitos = new Menu("Ambitos");
+        mModalidades = new Menu("Modalidades");
+        mManual = new Menu("manual de Usuario");
         mEstudiante.setDisable(true);
         mFacultades.setDisable(true);
         mEscuelas.setDisable(true);
         mPeriodos.setDisable(true);
         mNiveles.setDisable(true);
-        mAmbitos.setDisable(false);
-        mModalidades.setDisable(true);
-        superior=new VBox();
-        escritorio=new Pane();
+        mAmbitos.setDisable(true);
+        mModalidades.setDisable(false);
+        superior = new VBox();
+        escritorio = new Pane();
         //Ingreso de subitems a los menus
-        smIniciarSesion=new MenuItem("Iniciar Sesion");
-        smSalir=new MenuItem("Salir");
+        smIniciarSesion = new MenuItem("Iniciar Sesion");
+        smSalir = new MenuItem("Salir");
         smSalir.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 salirEventHandler(event);
             }
         });
-    smEstNuevo=new MenuItem("Estudiante Nuevo");
-    smEstActualizar=new MenuItem("Estudiante Actualizar");
-    smEstEliminar=new MenuItem("Estudiante Eliminar");
-    smEstMostrarCodigo=new MenuItem("Estudiante por codigo");
-    smEstListado=new MenuItem("Estudiante Listado");
-    smFacNuevo=new MenuItem("Facultad Nuevo");
-    smFacActualizar=new MenuItem("Facultad Actualizar");
-    smFacEliminar=new MenuItem("Facultad Eliminar");
-    smFacMostrarCodigo=new MenuItem("Facultad por codigo");
-    smFacListado=new MenuItem("Facultad Listado");
-    smEscNuevo=new MenuItem("Escuela Nuevo");
-    smEscActualizar=new MenuItem("Escuela Actualizar");
-    smEscEliminar=new MenuItem("Escuela Eliminar");
-    smEscMostrarCodigo=new MenuItem("Escuela por codigo");
-    smEscListado=new MenuItem("Escuela Listado");
-    smPerNuevo=new MenuItem("Periodo Nuevo");
-    smPerActualizar=new MenuItem("Periodo Actualizar");
-    smPerEliminar=new MenuItem("Periodo Eliminar");
-    smPerMostrarCodigo=new MenuItem("Periodo por codigo");
-    smPerListado=new MenuItem("Periodo Listado");
-    smNivNuevo=new MenuItem("Nivel Nuevo");
-    smNivActualizar=new MenuItem("Nivel Actualizar");
-    smNivEliminar=new MenuItem("Nivel Eliminar");
-    smNivMostrarCodigo=new MenuItem("Nivel por codigo");
-    smNivListado=new MenuItem("Nivel Listado");
-    smAmbNuevo=new MenuItem("Ambito Nuevo");
-    smAmbNuevo.setOnAction(new EventHandler<ActionEvent>() {
+        smEstNuevo = new MenuItem("Estudiante Nuevo");
+        smEstActualizar = new MenuItem("Estudiante Actualizar");
+        smEstEliminar = new MenuItem("Estudiante Eliminar");
+        smEstMostrarCodigo = new MenuItem("Estudiante por codigo");
+        smEstListado = new MenuItem("Estudiante Listado");
+        smFacNuevo = new MenuItem("Facultad Nuevo");
+        smFacActualizar = new MenuItem("Facultad Actualizar");
+        smFacEliminar = new MenuItem("Facultad Eliminar");
+        smFacMostrarCodigo = new MenuItem("Facultad por codigo");
+        smFacListado = new MenuItem("Facultad Listado");
+        smEscNuevo = new MenuItem("Escuela Nuevo");
+        smEscActualizar = new MenuItem("Escuela Actualizar");
+        smEscEliminar = new MenuItem("Escuela Eliminar");
+        smEscMostrarCodigo = new MenuItem("Escuela por codigo");
+        smEscListado = new MenuItem("Escuela Listado");
+        smPerNuevo = new MenuItem("Periodo Nuevo");
+        smPerActualizar = new MenuItem("Periodo Actualizar");
+        smPerEliminar = new MenuItem("Periodo Eliminar");
+        smPerMostrarCodigo = new MenuItem("Periodo por codigo");
+        smPerListado = new MenuItem("Periodo Listado");
+        smNivNuevo = new MenuItem("Nivel Nuevo");
+        smNivActualizar = new MenuItem("Nivel Actualizar");
+        smNivEliminar = new MenuItem("Nivel Eliminar");
+        smNivMostrarCodigo = new MenuItem("Nivel por codigo");
+        smNivListado = new MenuItem("Nivel Listado");
+        smAmbNuevo = new MenuItem("Ambito Nuevo");
+        smAmbNuevo.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Pane ambitoNuevo=new Pane();
+                Pane ambitoNuevo = new Pane();
                 ambitoNuevo.getChildren().add(nAmbito(event));
                 escritorio.getChildren().add(ambitoNuevo);
             }
         });
-    smAmbActualizar=new MenuItem("Ambito Actualizar");
-    smAmbActualizar.setOnAction(new EventHandler<ActionEvent>() {
+        smAmbActualizar = new MenuItem("Ambito Actualizar");
+        smAmbActualizar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Pane ambitoAct=new Pane();
+                Pane ambitoAct = new Pane();
                 ambitoAct.getChildren().add(aAmbito(event));
                 escritorio.getChildren().add(ambitoAct);
             }
         });
-    smAmbEliminar=new MenuItem("Ambito Eliminar");
-    smAmbMostrarCodigo=new MenuItem("Ambito por codigo");
-    smAmbListado=new MenuItem("Ambito Listado");
-    smModNuevo=new MenuItem("Modalidad Nuevo");
-    smModActualizar=new MenuItem("Modalidad Actualizar");
-    smModEliminar=new MenuItem("Modalidad Eliminar");
-    smModMostrarCodigo=new MenuItem("Modalidad por codigo");
-    smModListado=new MenuItem("Modalidad Listado");
-    smManualMostrar=new MenuItem("Mostrar Manual");
-    //submenus
-    mInicio.getItems().addAll(smIniciarSesion, smSalir); 
-    mEstudiante.getItems().addAll(smEstNuevo, smEstActualizar, smEstEliminar, new SeparatorMenuItem(), smEstMostrarCodigo, smEstListado);
-    mFacultades.getItems().addAll(smFacNuevo, smFacActualizar, smFacEliminar, new SeparatorMenuItem(), smFacMostrarCodigo, smFacListado);
-    mEscuelas.getItems().addAll(smEscNuevo, smEscActualizar, smEscEliminar, new SeparatorMenuItem(), smEscMostrarCodigo, smEscListado);
-    mPeriodos.getItems().addAll(smPerNuevo, smPerActualizar, smPerEliminar, new SeparatorMenuItem(), smPerMostrarCodigo, smPerListado);
-    mNiveles.getItems().addAll(smNivNuevo, smNivActualizar, smNivEliminar, new SeparatorMenuItem(), smNivMostrarCodigo, smNivListado);
-    mAmbitos.getItems().addAll(smAmbNuevo, smAmbActualizar, smAmbEliminar, new SeparatorMenuItem(), smAmbMostrarCodigo, smAmbListado);
-    mModalidades.getItems().addAll(smModNuevo, smModActualizar, smModEliminar, new SeparatorMenuItem(), smModMostrarCodigo, smModListado);
-    mManual.getItems().addAll(smManualMostrar);
+        smAmbEliminar = new MenuItem("Ambito Eliminar");
+        smAmbEliminar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Pane ambitoEli = new Pane();
+                ambitoEli.getChildren().add(eAmbito(event));
+                escritorio.getChildren().add(ambitoEli);
+            }
+        });
+        smAmbMostrarCodigo = new MenuItem("Ambito por codigo");
+        smAmbMostrarCodigo.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Pane ambitoOb = new Pane();
+                ambitoOb.getChildren().add(oAmbito(event));
+                escritorio.getChildren().add(ambitoOb);
+            }
+        });
+        smAmbListado = new MenuItem("Ambito Listado");
+        smAmbListado.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Pane ambitoLis = new Pane();
+                ambitoLis.getChildren().add(lAmbito(event));
+                escritorio.getChildren().add(ambitoLis);
+            }
+        });
+        smModNuevo = new MenuItem("Modalidad Nuevo");
+        smModNuevo.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Pane modalidadNuevo = new Pane();
+                modalidadNuevo.getChildren().add(nModalidad(event));
+                escritorio.getChildren().add(modalidadNuevo);
+            }
+        });
+        smModActualizar = new MenuItem("Modalidad Actualizar");
+        smModActualizar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Pane modalidadAct = new Pane();
+                modalidadAct.getChildren().add(aModalidad(event));
+                escritorio.getChildren().add(modalidadAct);
+            }
+        });
+        smModEliminar = new MenuItem("Modalidad Eliminar");
+        smModMostrarCodigo = new MenuItem("Modalidad por codigo");
+        smModListado = new MenuItem("Modalidad Listado");
+        smManualMostrar = new MenuItem("Mostrar Manual");
+        //submenus
+        mInicio.getItems().addAll(smIniciarSesion, smSalir);
+        mEstudiante.getItems().addAll(smEstNuevo, smEstActualizar, smEstEliminar, new SeparatorMenuItem(), smEstMostrarCodigo, smEstListado);
+        mFacultades.getItems().addAll(smFacNuevo, smFacActualizar, smFacEliminar, new SeparatorMenuItem(), smFacMostrarCodigo, smFacListado);
+        mEscuelas.getItems().addAll(smEscNuevo, smEscActualizar, smEscEliminar, new SeparatorMenuItem(), smEscMostrarCodigo, smEscListado);
+        mPeriodos.getItems().addAll(smPerNuevo, smPerActualizar, smPerEliminar, new SeparatorMenuItem(), smPerMostrarCodigo, smPerListado);
+        mNiveles.getItems().addAll(smNivNuevo, smNivActualizar, smNivEliminar, new SeparatorMenuItem(), smNivMostrarCodigo, smNivListado);
+        mAmbitos.getItems().addAll(smAmbNuevo, smAmbActualizar, smAmbEliminar, new SeparatorMenuItem(), smAmbMostrarCodigo, smAmbListado);
+        mModalidades.getItems().addAll(smModNuevo, smModActualizar, smModEliminar, new SeparatorMenuItem(), smModMostrarCodigo, smModListado);
+        mManual.getItems().addAll(smManualMostrar);
         //ingreso de items menu
         menuPrincipal.getMenus().addAll(mInicio, mEstudiante, mFacultades, mEscuelas, mPeriodos, mNiveles, mAmbitos, mModalidades, mManual);
         superior.getChildren().addAll(visorInicio, menuPrincipal);
@@ -184,12 +223,12 @@ public class FormPrincipal extends Application {
         primaryStage.setMaxHeight(vPrincipal.getHeight());
         primaryStage.show();
     }
-    
+
     public static void main(String[] args) {
         launch(args);
     }
-    
-    public VentanaInterna nAmbito(ActionEvent event){
+
+    public VentanaInterna nAmbito(ActionEvent event) {
         BorderPane AmbN = new BorderPane();
         Label titulo = new Label("NUEVO AMBITO");
         titulo.setFont(Font.font("Berlin Sans FB Demi", 20));
@@ -211,10 +250,10 @@ public class FormPrincipal extends Application {
         nuevo.makeResizable(20);
         nuevo.makeFocusable();
         nuevo.setCloseButton(cerrar);
-return nuevo;
+        return nuevo;
     }
-    
-    public VentanaInterna aAmbito(ActionEvent event){
+
+    public VentanaInterna aAmbito(ActionEvent event) {
         BorderPane AmbN = new BorderPane();
         Label titulo = new Label("ACTUALIZAR AMBITO");
         titulo.setFont(Font.font("Berlin Sans FB Demi", 20));
@@ -236,11 +275,136 @@ return nuevo;
         nuevo.makeResizable(20);
         nuevo.makeFocusable();
         nuevo.setCloseButton(cerrar);
-return nuevo;
+        return nuevo;
+    }
+
+    public VentanaInterna eAmbito(ActionEvent event) {
+        BorderPane AmbN = new BorderPane();
+        Label titulo = new Label("ELIMINAR AMBITO");
+        titulo.setFont(Font.font("Berlin Sans FB Demi", 20));
+        titulo.setTextFill(Color.AZURE);
+        Button cerrar = new Button("X");
+        cerrar.setFont(Font.font("Arial Black", 18));
+        cerrar.setTextFill(Color.CYAN);
+        //Barra de Titulo subVentana
+        BarraDeTitulo bTitulo = new BarraDeTitulo(titulo, cerrar);
+        AmbN.setTop(bTitulo.getBarra());
+        //Interior de la subVentana
+        FormEambito NAmb = new FormEambito();
+        AmbN.setCenter(NAmb.getPPrincipal());
+        //Creacion de Ventana interna
+        VentanaInterna nuevo = new VentanaInterna();
+        nuevo.setRoot(AmbN);
+        nuevo.makeDragable(bTitulo.getBarra());
+        nuevo.makeDragable(titulo);
+        nuevo.makeResizable(20);
+        nuevo.makeFocusable();
+        nuevo.setCloseButton(cerrar);
+        return nuevo;
+    }
+
+    public VentanaInterna oAmbito(ActionEvent event) {
+        BorderPane AmbN = new BorderPane();
+        Label titulo = new Label("OBTENER AMBITO");
+        titulo.setFont(Font.font("Berlin Sans FB Demi", 20));
+        titulo.setTextFill(Color.AZURE);
+        Button cerrar = new Button("X");
+        cerrar.setFont(Font.font("Arial Black", 18));
+        cerrar.setTextFill(Color.CYAN);
+        //Barra de Titulo subVentana
+        BarraDeTitulo bTitulo = new BarraDeTitulo(titulo, cerrar);
+        AmbN.setTop(bTitulo.getBarra());
+        //Interior de la subVentana
+        FormOambito NAmb = new FormOambito();
+        AmbN.setCenter(NAmb.getPPrincipal());
+        //Creacion de Ventana interna
+        VentanaInterna nuevo = new VentanaInterna();
+        nuevo.setRoot(AmbN);
+        nuevo.makeDragable(bTitulo.getBarra());
+        nuevo.makeDragable(titulo);
+        nuevo.makeResizable(20);
+        nuevo.makeFocusable();
+        nuevo.setCloseButton(cerrar);
+        return nuevo;
+    }
+
+    public VentanaInterna lAmbito(ActionEvent event) {
+        BorderPane AmbN = new BorderPane();
+        Label titulo = new Label("LISTADO AMBITO");
+        titulo.setFont(Font.font("Berlin Sans FB Demi", 20));
+        titulo.setTextFill(Color.AZURE);
+        Button cerrar = new Button("X");
+        cerrar.setFont(Font.font("Arial Black", 18));
+        cerrar.setTextFill(Color.CYAN);
+        //Barra de Titulo subVentana
+        BarraDeTitulo bTitulo = new BarraDeTitulo(titulo, cerrar);
+        AmbN.setTop(bTitulo.getBarra());
+        //Interior de la subVentana
+        FormLambito NAmb = new FormLambito();
+        AmbN.setCenter(NAmb.getPPrincipal());
+        //Creacion de Ventana interna
+        VentanaInterna nuevo = new VentanaInterna();
+        nuevo.setRoot(AmbN);
+        nuevo.makeDragable(bTitulo.getBarra());
+        nuevo.makeDragable(titulo);
+        nuevo.makeResizable(20);
+        nuevo.makeFocusable();
+        nuevo.setCloseButton(cerrar);
+        return nuevo;
     }
     
+    public VentanaInterna nModalidad(ActionEvent event) {
+        BorderPane AmbN = new BorderPane();
+        Label titulo = new Label("NUEVA MODALIDAD");
+        titulo.setFont(Font.font("Berlin Sans FB Demi", 20));
+        titulo.setTextFill(Color.AZURE);
+        Button cerrar = new Button("X");
+        cerrar.setFont(Font.font("Arial Black", 18));
+        cerrar.setTextFill(Color.CYAN);
+        //Barra de Titulo subVentana
+        BarraDeTitulo bTitulo = new BarraDeTitulo(titulo, cerrar);
+        AmbN.setTop(bTitulo.getBarra());
+        //Interior de la subVentana
+        FormNmodalidad NAmb = new FormNmodalidad();
+        AmbN.setCenter(NAmb.getPPrincipal());
+        //Creacion de Ventana interna
+        VentanaInterna nuevo = new VentanaInterna();
+        nuevo.setRoot(AmbN);
+        nuevo.makeDragable(bTitulo.getBarra());
+        nuevo.makeDragable(titulo);
+        nuevo.makeResizable(20);
+        nuevo.makeFocusable();
+        nuevo.setCloseButton(cerrar);
+        return nuevo;
+    }
+    
+    public VentanaInterna aModalidad(ActionEvent event) {
+        BorderPane AmbN = new BorderPane();
+        Label titulo = new Label("ACTUALIZAR MODALIDAD");
+        titulo.setFont(Font.font("Berlin Sans FB Demi", 20));
+        titulo.setTextFill(Color.AZURE);
+        Button cerrar = new Button("X");
+        cerrar.setFont(Font.font("Arial Black", 18));
+        cerrar.setTextFill(Color.CYAN);
+        //Barra de Titulo subVentana
+        BarraDeTitulo bTitulo = new BarraDeTitulo(titulo, cerrar);
+        AmbN.setTop(bTitulo.getBarra());
+        //Interior de la subVentana
+        FormAmodalidad NAmb = new FormAmodalidad();
+        AmbN.setCenter(NAmb.getPPrincipal());
+        //Creacion de Ventana interna
+        VentanaInterna nuevo = new VentanaInterna();
+        nuevo.setRoot(AmbN);
+        nuevo.makeDragable(bTitulo.getBarra());
+        nuevo.makeDragable(titulo);
+        nuevo.makeResizable(20);
+        nuevo.makeFocusable();
+        nuevo.setCloseButton(cerrar);
+        return nuevo;
+    }
+
     public void salirEventHandler(ActionEvent event) {
         System.exit(0);
-}
-    
+    }
+
 }

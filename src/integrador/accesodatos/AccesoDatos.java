@@ -1,18 +1,20 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package integrador.accesodatos;
 
-
+import integrador.accesodatos.*;
 import java.io.Serializable;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author dpalacios
- */
+
 public class AccesoDatos implements Serializable {
 
     public static ConjuntoResultado ejecutaQuery(String query) throws Exception {

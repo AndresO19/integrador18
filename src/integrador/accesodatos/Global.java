@@ -1,16 +1,14 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package integrador.accesodatos;
 
+import integrador.accesodatos.*;
 import java.io.Serializable;
 import integrador.recursos.ResourceUtil;
 
-/**
- *
- * @author root
- */
 public final class Global implements Serializable {
 
 //    private java.util.ResourceBundle Configuracion = java.util.ResourceBundle.getBundle("accesodatos.database");

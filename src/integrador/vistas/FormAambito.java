@@ -73,7 +73,7 @@ public class FormAambito {
     tobservacion.setWrapText(true);
     testado=new TextField();
     testado.setPadding(new Insets(10));
-    bingresar=new Button("ingresar");
+    bingresar=new Button("Actualizar");
     bingresar.setPadding(new Insets(10));
     bingresar.setFont(Font.font("Arial Black", 14));
     bLimpiar=new Button("Limpiar");
@@ -120,6 +120,49 @@ public class FormAambito {
                     }
                 } catch (Exception e) {
                     System.out.println("Error: "+e.getMessage());
+                }
+            }
+        });
+    bingresar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Ambitos ambito=null;
+                try {
+                    ambito=new Ambitos();
+                    ambito.setCodigo(0);
+                    ambito.setNombre(tnombre.getText());
+                    ambito.setObservacion(tobservacion.getText());
+                    ambito.setEstado(Integer.parseInt(testado.getText()));
+                    if(AmbitoImpl.actualizar(ambito)){
+                        Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+            alerta.setTitle("INFORMACION DEL SISTEMA");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Actualizacion Correcta ");
+alerta.showAndWait();
+                    }
+                } catch (Exception e) {
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("INFORMACION DEL SISTEMA");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Error: " + e.getMessage());
+alerta.showAndWait();
+                }
+            }
+        });
+    bLimpiar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    tcodigo.setText("");
+                    tnombre.setText("");
+                    tobservacion.setText("");
+                    testado.setText("");
+                } catch (Exception e) {
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("INFORMACION DEL SISTEMA");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Error: " + e.getMessage());
+alerta.showAndWait();
                 }
             }
         });
