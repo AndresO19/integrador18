@@ -12,20 +12,22 @@ import javafx.scene.image.*;
 public class FormPrincipal extends Application {
     
     //Escenario
-    private Image imagenPrincipal;
-    private ImageView visorInicio;
-    private Scene escenario; 
+    public Image imagenPrincipal;
+    public ImageView visorInicio;
+    public Scene escenario; 
     //ventana General
-    private VBox vPrincipal;
+    public VBox vPrincipal;
     
     //items menu
-    private MenuBar menuPrincipal;
-    private Menu mInicio;
-    private Menu mEstudiante;
-    private Menu mDirectorCarrera;
-    private Menu mTutoriasdeAsignatura;
-    private Menu mTutoriaGrupal;
-    private Menu mManual;
+    public MenuBar menuPrincipal;
+    public Menu mInicio;
+    public Menu mEstudiante;
+    public Menu mFacultades;
+    public Menu mEscuelas;
+    public Menu mNiveles;
+    public Menu mAmbitos;
+    public Menu mModalidades;
+    public Menu mManual;
     
     
     @Override
@@ -37,12 +39,20 @@ public class FormPrincipal extends Application {
         menuPrincipal=new MenuBar();
         mInicio=new Menu("Inicio");
         mEstudiante=new Menu("Estudiantes");
-        mDirectorCarrera=new Menu("Director de Carrera");
-        mTutoriasdeAsignatura=new Menu("Tutorias de Asignatura");
-        mTutoriaGrupal=new Menu("Tutorias Grupales");
-        mManual=new Menu("Manual de usuario");
+        mFacultades=new Menu("Facultades");
+        mEscuelas=new Menu("Escuelas");
+        mNiveles=new Menu("Niveles");
+        mAmbitos=new Menu("Ambitos");
+        mModalidades=new Menu("Modalidades");
+        mManual=new Menu("manual de Usuario");
+        mEstudiante.setDisable(true);
+        mFacultades.setDisable(true);
+        mEscuelas.setDisable(true);
+        mNiveles.setDisable(true);
+        mAmbitos.setDisable(true);
+        mModalidades.setDisable(true);
         //ingreso de items menu
-        menuPrincipal.getMenus().addAll(mInicio, mEstudiante, mDirectorCarrera, mTutoriasdeAsignatura, mTutoriaGrupal, mManual);
+        menuPrincipal.getMenus().addAll(mInicio, mEstudiante, mFacultades, mEscuelas, mNiveles, mAmbitos, mModalidades, mManual);
         //Ingreso de item en ventana ordenado
         vPrincipal.getChildren().addAll(visorInicio, menuPrincipal);
         vPrincipal.setMaxSize(865, 685);
