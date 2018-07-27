@@ -14,19 +14,20 @@ public class Estudiante {
     
     private int codigo;
     private String nombre;
-    private String descripcion;
+    private String apellido;
     private String cedula;
     private int codigo_sicoa;
     private Periodo periodo;
     private Nivel nivel;
 
     public Estudiante() {
+        
     }
 
-    public Estudiante(int codigo, String nombre, String descripcion, String cedula, int codigo_sicoa, Periodo periodo, Nivel nivel) {
+    public Estudiante(int codigo, String nombre, String apellido, String cedula, int codigo_sicoa, Periodo periodo, Nivel nivel) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.descripcion = descripcion;
+        this.apellido = apellido;
         this.cedula = cedula;
         this.codigo_sicoa = codigo_sicoa;
         this.periodo = periodo;
@@ -49,12 +50,12 @@ public class Estudiante {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getCedula() {
